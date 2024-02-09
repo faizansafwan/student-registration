@@ -9,6 +9,7 @@ function Login() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate()
 
+    // Function for admin login
     const handleLogin =  (e) => {
         e.preventDefault()
         axios.post('http://localhost:2700/login', {email, password})
@@ -20,6 +21,12 @@ function Login() {
         }) 
         .catch(err => console.log(err))
     }
+
+
+    const googleLogin = () => {
+        window.location.href = 'http://localhost:2700/oauth/';
+    }
+    
     return(
         <div className='d-flex bg-primary justify-content-center align-items-center vh-100'>
 
@@ -46,7 +53,7 @@ function Login() {
                     </div> 
                     <p className=" text-center mt-2"> Or </p>
                     <div className='d-grid gap-2'>
-                        <button className='btn btn-outline-primary btn-lg' type='submit'>Sign In with google</button>
+                        <button className='btn btn-outline-primary btn-lg' type='submit' onClick={googleLogin}>Sign In with google</button>
                     </div>
                 </form>
 
